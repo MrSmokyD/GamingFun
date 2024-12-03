@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr.SmokyD Gaming</title>
+  <style>
+    body {
+      background: black;
+      color: gold;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .slot-machine {
+      margin-top: 50px;
+    }
+    .reel {
+      display: inline-block;
+      font-size: 3rem;
+      margin: 0 10px;
+    }
+    button {
+      background: gold;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: darkgoldenrod;
+    }
+  </style>
+</head>
+<body>
+  <h1>Willkommen bei Mr.SmokyD Gaming</h1>
+  <h2>Slot-Machine</h2>
+  <div class="slot-machine">
+    <span class="reel" id="reel1">🍒</span>
+    <span class="reel" id="reel2">🍋</span>
+    <span class="reel" id="reel3">7️⃣</span>
+  </div>
+  <br><br>
+  <button onclick="spin()">Drehen!</button>
+  <p id="result"></p>
+
+  <script>
+    function spin() {
+      const symbols = ["🍒", "🍋", "7️⃣", "⭐", "🍉"];
+      const reels = Array.from({ length: 3 }, () => symbols[Math.floor(Math.random() * symbols.length)]);
+      document.getElementById("reel1").textContent = reels[0];
+      document.getElementById("reel2").textContent = reels[1];
+      document.getElementById("reel3").textContent = reels[2];
+      if (new Set(reels).size === 1) {
+        document.getElementById("result").textContent = "Jackpot! 🎉";
+      } else {
+        document.getElementById("result").textContent = "Versuch's nochmal!";
+      }
+    }
+  </script>
+</body>
+</html>
